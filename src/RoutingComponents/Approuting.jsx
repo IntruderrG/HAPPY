@@ -4,6 +4,7 @@ import LandingPage from "../Components/LandingPage/LandingHome/LandingHome";
 import VideoChat from "../Components/VideoChat/VideoChat";
 import AudioChat from "../Components/AudioChat/AudioChat";
 import Pagenotfound from "./PageNotFound/pagenotfound";
+import Explore from "../Components/Explore/Explore";
 function Approuting() {
   return (
     <Routes>
@@ -14,7 +15,7 @@ function Approuting() {
       <Route path="/contact-us" />
       <Route path="/report" />
       <Route path="/about" />
-      <Route path="/explore" />
+      <Route path="/explore" element={<Explore />} />
       <Route path="*" element={<Pagenotfound />} />
     </Routes>
   );
