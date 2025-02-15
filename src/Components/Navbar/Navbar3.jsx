@@ -1,13 +1,26 @@
 import React from "react";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+
 function Navbar3() {
+  const navigate = useNavigate();
   return (
     <div className="h-26 m-1.5 flex justify-between">
-      <div className="w-110 font-bold text-5xl flex items-center p-4 ">
+      <div
+        className="w-110 font-bold text-5xl flex items-center p-4 "
+        onClick={() => {
+          navigate("/");
+        }}
+      >
         H A P P Y
       </div>
       <div className="w-4xl flex justify-around items-center underline text-2xl">
-        <div className="cursor-pointer transition-all duration-300 hover:scale-105 ">
+        <div
+          className="cursor-pointer transition-all duration-300 hover:scale-105 "
+          onClick={() => {
+            navigate("/");
+          }}
+        >
           home
         </div>
         <div className="cursor-pointer transition-all duration-300 hover:scale-105">

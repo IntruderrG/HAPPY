@@ -4,7 +4,7 @@ import character_2 from "./Images/Characters (with shadow)/Character_2_Standing.
 function LandingHome() {
   const navigate = useNavigate();
   return (
-    <div className=" h-[90vh] pl-7 pt-7 flex">
+    <div className=" h-[100vh] pl-7 pt-[11vh] flex">
       <div className="w-3xl flex items-center">
         <div className="w-3xl flex flex-col  gap-y-20 pb-12">
           <div className="w-full">
