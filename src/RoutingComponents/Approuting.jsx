@@ -5,6 +5,7 @@ import VideoChat from "../Components/VideoChat/VideoChat";
 import AudioChat from "../Components/AudioChat/AudioChat";
 import Pagenotfound from "./PageNotFound/pagenotfound";
 import Explore from "../Components/Explore/Explore";
+import ContactUS from "../Components/HelpSection/Help";
 function Approuting() {
   return (
     <Routes>
@@ -12,7 +13,7 @@ function Approuting() {
       <Route path="/videochat" element={<VideoChat />} />
       <Route path="/audiochat" element={<AudioChat />} />
       <Route path="/dashboard" />
-      <Route path="/contact-us" />
+      <Route path="/contact-us" element={<ContactUS />} />
       <Route path="/report" />
       <Route path="/about" />
       <Route path="/explore" element={<Explore />} />
