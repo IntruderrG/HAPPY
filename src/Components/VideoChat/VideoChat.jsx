@@ -61,8 +61,12 @@ function VideoChat() {
             <button className=" cursor-pointer h-12 w-13 bg-white rounded-lg flex justify-center items-center shadow-md transition-transform duration-200 hover:scale-110">
               <img src={shuffle} alt="Shuffle" className="h-6" />
             </button>
-            <button className=" cursor-pointer h-12 w-30 bg-red-600 rounded-lg flex justify-center items-center border-2 border-white shadow-lg transition-transform duration-200 hover:scale-110 active:scale-95">
-              <img src={end} alt="End Call" className="h-8 rotate-45" />
+            <button className=" cursor-pointer h-12 w-30 bg-red-600 rounded-lg flex justify-center items-center  shadow-lg transition-transform duration-200 hover:scale-110 active:scale-95">
+              <img
+                src={end}
+                alt="End Call"
+                className="h-8 rotate-45 scale-150"
+              />
             </button>
           </div>
         </div>
