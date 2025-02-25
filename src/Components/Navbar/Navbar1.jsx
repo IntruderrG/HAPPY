@@ -1,7 +1,9 @@
 import React from "react";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 function Navbar1() {
   const navigate = useNavigate();
+  const location = useLocation();
+
   return (
     <div className="h-[12vh]  w-full  flex justify-between fixed z-5 bg-white">
       <div
@@ -16,9 +18,13 @@ function Navbar1() {
         <div
           className="cursor-pointer transition-all duration-300 hover:scale-105 "
           onClick={() => {
-            document
-              .getElementById("top")
-              ?.scrollIntoView({ behavior: "smooth" });
+            if (location.pathname != "/") {
+              navigate("/");
+            } else {
+              document
+                .getElementById("top")
+                ?.scrollIntoView({ behavior: "smooth" });
+            }
           }}
         >
           home
@@ -34,9 +40,13 @@ function Navbar1() {
         <div
           className="cursor-pointer transition-all duration-300 hover:scale-105 "
           onClick={() => {
-            document
-              .getElementById("exploree")
-              ?.scrollIntoView({ behavior: "smooth" });
+            if (location.pathname != "/") {
+              navigate("/");
+            } else {
+              document
+                .getElementById("exploree")
+                ?.scrollIntoView({ behavior: "smooth" });
+            }
           }}
         >
           explore
@@ -44,7 +54,7 @@ function Navbar1() {
         <div
           className="cursor-pointer transition-all duration-300 hover:scale-105 "
           onClick={() => {
-            () => navigate("/about");
+            navigate("/about");
           }}
         >
           about

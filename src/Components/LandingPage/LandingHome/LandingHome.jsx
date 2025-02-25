@@ -2,11 +2,12 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 import character_2 from "./Images/Characters (with shadow)/Character_2_Standing.png";
 import Explore from "../../Explore/Explore";
+import Signin from "../../Authentication/Signin/Signin";
 function LandingHome() {
   const navigate = useNavigate();
   return (
     <>
-      <div className=" h-[100vh] pl-7 pt-[11vh] flex" id="top">
+      <div className=" h-[100vh] pl-7 pt-[11vh] flex" id="top relative">
         <div className="w-3xl flex items-center">
           <div className="w-3xl flex flex-col  gap-y-20 pb-12">
             <div className="w-full">
@@ -39,6 +40,9 @@ function LandingHome() {
             src={character_2}
             alt=""
           />
+        </div>
+        <div className="h-[100vh] w-full absolute top-0 left-0">
+          {/* <Signin /> */}
         </div>
       </div>
       <Explore />

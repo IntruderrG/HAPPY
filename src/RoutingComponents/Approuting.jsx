@@ -6,6 +6,7 @@ import AudioChat from "../Components/AudioChat/AudioChat";
 import Pagenotfound from "./PageNotFound/pagenotfound";
 import Explore from "../Components/Explore/Explore";
 import ContactUS from "../Components/HelpSection/Help";
+import Signin from "../Components/Authentication/Signin/Signin";
 function Approuting() {
   return (
     <Routes>
@@ -16,6 +17,7 @@ function Approuting() {
       <Route path="/contact-us" element={<ContactUS />} />
       <Route path="/report" />
       <Route path="/about" />
+      <Route path="/signin" element={<Signin />} />
       <Route path="/explore" element={<Explore />} />
       <Route path="*" element={<Pagenotfound />} />
     </Routes>

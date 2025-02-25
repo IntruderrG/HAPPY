@@ -18,10 +18,10 @@ function Navbar3() {
         <div
           className="cursor-pointer transition-all duration-300 hover:scale-105 "
           onClick={() => {
-            navigate("/");
+            navigate("/dashboard");
           }}
         >
-          home
+          dashboard
         </div>
         <div className="cursor-pointer transition-all duration-300 hover:scale-105">
           overview
