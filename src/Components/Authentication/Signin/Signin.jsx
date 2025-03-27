@@ -1,78 +1,111 @@
-import React from "react";
-import sigincartoon from "../../../../Images/3-D Characters/cat2 (3).png";
+import { useState } from "react";
+import { FcGoogle } from "react-icons/fc";
 
-function Signin() {
+const SignIn = () => {
+  const [formData, setFormData] = useState({
+    email: "",
+    password: "",
+  });
+
+  const [errors, setErrors] = useState({});
+
+  // Handle Input Change
+  const handleChange = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+
+  // Form Validation
+  const validateForm = () => {
+    let newErrors = {};
+
+    if (!formData.email.trim()) newErrors.email = "Email is required.";
+    if (!/\S+@\S+\.\S+/.test(formData.email))
+      newErrors.email = "Enter a valid email.";
+    if (!formData.password) newErrors.password = "Password is required.";
+    if (formData.password.length < 6)
+      newErrors.password = "Password must be at least 6 characters.";
+
+    setErrors(newErrors);
+    return Object.keys(newErrors).length === 0;
+  };
+
+  // Handle Form Submission
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (validateForm()) {
+      console.log("Form submitted:", formData);
+      // API call or authentication logic here
+    }
+  };
+
   return (
-    <div className="h-[100vh] w-full  flex justify-center items-center bg-white ">
-      <div className=" h-full w-[38%] relative bg-transparent">
-        <div className="h-full w-full">
-          <img
-            src={sigincartoon}
-            alt=""
-            className="h-full w-full object-cover translate-y-10 z-1"
+    <div className="flex justify-center items-center min-h-screen bg-white">
+      <div className="w-full max-w-md bg-gray-100 p-8 rounded-2xl shadow-lg text-center">
+        <h2 className="text-3xl font-bold text-black mb-6">Welcome Back</h2>
+
+        {/* Form */}
+        <form onSubmit={handleSubmit}>
+          {/* Email Input */}
+          <input
+            type="email"
+            name="email"
+            placeholder="Email"
+            value={formData.email}
+            onChange={handleChange}
+            className="w-full px-4 py-3 mb-2 text-black rounded-lg border border-gray-300 focus:outline-none focus:border-purple-500"
           />
+          {errors.email && (
+            <p className="text-red-500 text-sm">{errors.email}</p>
+          )}
+
+          {/* Password Input */}
+          <input
+            type="password"
+            name="password"
+            placeholder="Password"
+            value={formData.password}
+            onChange={handleChange}
+            className="w-full px-4 py-3 mb-2 text-black rounded-lg border border-gray-300 focus:outline-none focus:border-purple-500"
+          />
+          {errors.password && (
+            <p className="text-red-500 text-sm">{errors.password}</p>
+          )}
+
+          {/* Sign In Button */}
+          <button
+            type="submit"
+            className="w-full bg-purple-500 text-white py-3 rounded-lg font-semibold hover:bg-purple-600"
+          >
+            Sign In
+          </button>
+        </form>
+
+        {/* OR Divider */}
+        <div className="flex items-center my-4">
+          <hr className="flex-grow border-gray-400" />
+          <span className="px-2 text-gray-600">OR</span>
+          <hr className="flex-grow border-gray-400" />
         </div>
-        <div
-          className="absolute top-[45%] left-5 w-[90%] p-5 
-  bg-gradient-to-br from-[#fdfcfb] via-[#f1c27d] to-[#f9a826] 
-  shadow-[0_4px_10px_rgba(0,0,0,0.5)] rounded-xl rotate-7 flex items-center"
-        >
-          <form className="flex w-full justify-between items-center">
-            {/* Left Section - Input Fields */}
-            <div className="w-1/2 pr-4">
-              <label className="block text-[#5a3d2b] font-semibold mb-1">
-                Username
-              </label>
-              <input
-                type="text"
-                className="w-full p-2 rounded-lg border cursor-text border-[#c87f42] 
-          focus:outline-none focus:ring-2 focus:ring-[#ff9b42] bg-[#fff8f0] text-[#5a3d2b]"
-              />
 
-              <label className="block text-[#5a3d2b] font-semibold mt-3 mb-1">
-                Password
-              </label>
-              <input
-                type="password"
-                className="w-full p-2 rounded-lg border cursor-text border-[#c87f42] 
-          focus:outline-none focus:ring-2 focus:ring-[#ff9b42] bg-[#fff8f0] text-[#5a3d2b]"
-              />
+        {/* Sign In with Google */}
+        <button className="w-full flex items-center justify-center bg-white border border-gray-300 text-gray-700 py-3 rounded-lg shadow-sm hover:shadow-md">
+          <FcGoogle className="text-2xl mr-2" />
+          Sign in with Google
+        </button>
 
-              <button
-                type="submit"
-                className="mt-4 w-full bg-[#d87a3b] text-white py-2 rounded-lg 
-          hover:bg-[#c56a30] transition cursor-pointer font-semibold shadow-md"
-              >
-                Sign In
-              </button>
-            </div>
-
-            {/* Divider */}
-            <div className="w-[2px] bg-[#ad6938] h-24 mx-3"></div>
-
-            {/* Right Section - Login Options */}
-            <div className="w-1/2 text-center">
-              <button
-                type="button"
-                className="w-full bg-[#f1c27d] text-[#5a3d2b] py-2 rounded-lg mb-2 
-          hover:bg-[#e0a668] transition cursor-pointer font-bold shadow-md"
-              >
-                Login
-              </button>
-              <button
-                type="button"
-                className="w-full bg-[#5a3d2b] text-white py-2 rounded-lg 
-          hover:bg-[#3d271c] transition cursor-pointer font-bold shadow-md"
-              >
-                Google Sign-in
-              </button>
-            </div>
-          </form>
-        </div>
+        {/* Redirect to Sign Up */}
+        <p className="mt-4 text-gray-600">
+          Don't have an account?{" "}
+          <a
+            href="/signup"
+            className="text-purple-600 font-bold hover:underline"
+          >
+            Sign Up
+          </a>
+        </p>
       </div>
     </div>
   );
-}
+};
 
-export default Signin;
-// bg-[url('/Images/Background-2.jpg')] bg-no-repeat bg-cover
+export default SignIn;
